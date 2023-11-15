@@ -1,9 +1,10 @@
 import express from "express";
+import { Recipe } from "../models/recipeModel.js";
 
 const router = express.Router();
 
 // Route to save a new Recipe
-router.post("/recipe", async (request, response) => {
+router.post("/", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -32,7 +33,7 @@ router.post("/recipe", async (request, response) => {
 });
 
 // Route to Get All Recipes from database
-router.get("/recipe", async (request, response) => {
+router.get("/", async (request, response) => {
   try {
     const recipes = await Recipe.find({});
 
@@ -47,7 +48,7 @@ router.get("/recipe", async (request, response) => {
 });
 
 // Route to Get One Recipe from database by id
-router.get("/recipe/:id", async (request, response) => {
+router.get("/:id", async (request, response) => {
   try {
     const { id } = request.params;
     const recipe = await Recipe.findById(id);
@@ -60,7 +61,7 @@ router.get("/recipe/:id", async (request, response) => {
 });
 
 // Route to Update Recipe
-router.put("/recipe/:id", async (request, response) => {
+router.put("/:id", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -78,10 +79,12 @@ router.put("/recipe/:id", async (request, response) => {
     const result = await Recipe.findByIdAndUpdate(id, request.body);
 
     if (!result) {
-      return response.status(404).send({ message: "Book not found" });
+      return response.status(404).send({ message: "Recipe not found" });
     }
 
-    return response.status(200).send({ message: "Book updated successfully" });
+    return response
+      .status(200)
+      .send({ message: "Recipe updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -89,7 +92,7 @@ router.put("/recipe/:id", async (request, response) => {
 });
 
 // Route to Delete a recipe
-router.delete("/recipe/:id", async (request, response) => {
+router.delete("/:id", async (request, response) => {
   try {
     const { id } = request.params;
 
@@ -105,3 +108,5 @@ router.delete("/recipe/:id", async (request, response) => {
     response.status(500).send({ message: error.message });
   }
 });
+
+export default router;

@@ -2,6 +2,7 @@ import express from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import { Recipe } from "./models/recipeModel.js";
+import recipeRoute from "./routes/recipeRoute.js";
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.get("/", (request, response) => {
   console.log(request);
   return response.status(234).send("This is a MERN Template.");
 });
+
+app.use("/recipe", recipeRoute);
 
 mongoose
   .connect(mongoDBURL)
