@@ -1,5 +1,9 @@
+import express from "express";
+
+const router = express.Router();
+
 // Route to save a new Recipe
-app.post("/recipe", async (request, response) => {
+router.post("/recipe", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -28,7 +32,7 @@ app.post("/recipe", async (request, response) => {
 });
 
 // Route to Get All Recipes from database
-app.get("/recipe", async (request, response) => {
+router.get("/recipe", async (request, response) => {
   try {
     const recipes = await Recipe.find({});
 
@@ -43,7 +47,7 @@ app.get("/recipe", async (request, response) => {
 });
 
 // Route to Get One Recipe from database by id
-app.get("/recipe/:id", async (request, response) => {
+router.get("/recipe/:id", async (request, response) => {
   try {
     const { id } = request.params;
     const recipe = await Recipe.findById(id);
@@ -56,7 +60,7 @@ app.get("/recipe/:id", async (request, response) => {
 });
 
 // Route to Update Recipe
-app.put("/recipe/:id", async (request, response) => {
+router.put("/recipe/:id", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -85,7 +89,7 @@ app.put("/recipe/:id", async (request, response) => {
 });
 
 // Route to Delete a recipe
-app.delete("/recipe/:id", async (request, response) => {
+router.delete("/recipe/:id", async (request, response) => {
   try {
     const { id } = request.params;
 
