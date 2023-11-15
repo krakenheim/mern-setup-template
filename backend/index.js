@@ -99,6 +99,24 @@ app.put("/recipe/:id", async (request, response) => {
   }
 });
 
+// Route to Delete a recipe
+app.delete("/recipe/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+
+    const result = await Recipe.findByIdAndDelete(id);
+
+    if (!result) {
+      return response.status(404).json({ message: "Book not found" });
+    }
+
+    return response.status(200).json({ message: "Book Deleted Successfully" });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 mongoose
   .connect(mongoDBURL)
   .then(() => {
