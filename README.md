@@ -1,5 +1,6 @@
 # mern-setup-template
 Create config.env file and add mongodb atlas connection string to an ATLAS variable.
+
 In config.env create a PORT variable and set it to desired local port.
 
 # setup guides 
