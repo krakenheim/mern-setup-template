@@ -4,7 +4,7 @@ Create config.env file and add mongodb atlas connection string to an 'mongoDBURL
 
 In config.env create a PORT variable and set it to desired local port. Tested at 5555.
 
-HTTP requests tested on postman https://web.postman.co/ through the desktop agent. OBS: Localhost request cannot be handled without the desktop agent.
+HTTP requests tested on postman https://web.postman.co/ through the desktop agent. OBS: Localhost request cannot be handled without the Postman desktop agent.
 
 # setup guides
 
