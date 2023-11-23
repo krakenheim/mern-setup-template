@@ -10,7 +10,7 @@ HTTP requests tested on postman https://web.postman.co/ through the desktop agen
 
 MERN stack setup tutorial
 https://www.youtube.com/watch?v=-42K44A1oMA
-25:47
+30:10
 
 MongoDB
 https://www.youtube.com/watch?v=bBA9rUdqmgY&t=317s
